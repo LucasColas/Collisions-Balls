@@ -1,10 +1,10 @@
 
 var canvas, context, frametime, before = Date.now(), now;
 
-var nbBalles = 50;
+var nbBalles = 5;
 var Balls = [];
-var speed = 200;
-var radiusc = 20;
+var speed = 2000;
+var radiusc = 5;
 
 
 window.onload = function() {
@@ -21,11 +21,8 @@ window.onload = function() {
 
 function animate() {
 	FPS();
-
 	context.clearRect(0, 0, canvas.width, canvas.height);
-
 	CheckCollision();
-
 	animateBalls();
 	requestAnimationFrame(animate);
 }
@@ -56,6 +53,7 @@ class Ball {
 		this.x = this.x + this.vx*frametime;
 		this.y = this.y + this.vy*frametime;
 		context.fillStyle = "rgb(" + this.r + ", " + this.g + ", " + this.b + ")"
+		context.beginPath();
 		context.arc(this.x, this.y, this.radius, 0, Math.PI*2);
 		context.closePath();
 		context.fill();
@@ -112,8 +110,8 @@ function addBall() {
 			(
 			Math.random()*canvas.width,
 			Math.random()*canvas.height,
-			(Math.random()+0,2)*speed,
-			(Math.random()+0,2)*speed,
+			(Math.random()-0.5)*speed,
+			(Math.random()-0.5)*speed,
 			(Math.random()+0,5)*radiusc,
 			Math.random()*255,
 			Math.random()*255,
