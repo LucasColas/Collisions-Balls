@@ -1,10 +1,10 @@
 
 var canvas, context, frametime, before = Date.now(), now;
 
-var nbBalles = 5;
+var nbBalls = 25;
 var Balls = [];
 var speed = 2000;
-var radiusc = 5;
+var radiusc = 8;
 
 
 window.onload = function() {
@@ -13,7 +13,7 @@ window.onload = function() {
     addBall();
     animate();
 
-    var interval = this.setInterval(this.resizeCanvas, 1000);
+    var interval = this.setInterval(this.resizeCanvas(), 1000);
 
 }
 
@@ -99,20 +99,20 @@ function animateBalls() {
 }
 
 
-function resizeCanvas () {
+function resizeCanvas() {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
 } 
 
 function addBall() {
-	for (var j = 0; j < nbBalles ; j++) {
+	for (var j = 0; j < nbBalls ; j++) {
 		Balls.push(new Ball
 			(
 			Math.random()*canvas.width,
 			Math.random()*canvas.height,
-			(Math.random()-0.5)*speed,
-			(Math.random()-0.5)*speed,
-			(Math.random()+0,5)*radiusc,
+			(Math.random())*speed,
+			(Math.random())*speed,
+			(Math.random()+3,5)*radiusc,
 			Math.random()*255,
 			Math.random()*255,
 			Math.random()*255,
@@ -127,7 +127,7 @@ function CheckCollision() {
 		for(j = 0; j <= Balls.length-1; j++) {
 			var distance = Balls[j].Distance(Balls[i]);
 
-			if (distance < Balls[j].rayon + Balls[i].rayon && Balls[i] != Balls[j]) {
+			if (distance < (Balls[j].radius + Balls[i].radius) && Balls[i] != Balls[j]) {
 				if (i > j) {
 					Balls.splice(i, 1);
 					Balls.splice(j, 1);
