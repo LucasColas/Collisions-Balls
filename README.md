@@ -10,4 +10,3 @@ Their sizes, colors, velocities and positions are generated randomly !
 
 # How to run ?
 Juste put files in the same folder. And run "animation.html" with an internet browser (such as google chrome, firefox...)
-
