@@ -82,9 +82,7 @@ class Ball {
 
 	Distance(ball) {
 		var distance = Math.pow(this.x - ball.x, 2) + Math.pow(this.y - ball.y, 2)
-		return Math.sqrt(
-			distance
-			)
+		return Math.sqrt(distance)
 	}	
 
 }
